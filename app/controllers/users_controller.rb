@@ -4,6 +4,7 @@ before_filter :correct_user, only: [:edit, :update]
 before_filter :admin_user, only: :destroy
 
   def new
+    ban_multiple_signup
   	@user = User.new
   end
 
@@ -11,7 +12,10 @@ before_filter :admin_user, only: :destroy
     @users = User.paginate(page: params[:page])
   end
 
+
   def create
+    ban_multiple_signup
+
   	@user = User.new(params[:user])
   	if @user.save
       sign_in @user
@@ -26,6 +30,7 @@ before_filter :admin_user, only: :destroy
 
   def show
   	@user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def edit
@@ -51,12 +56,7 @@ before_filter :admin_user, only: :destroy
 
   private
 
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in"
-      end
-    end
+
 
     def correct_user
       @user = User.find(params[:id])
@@ -65,6 +65,12 @@ before_filter :admin_user, only: :destroy
 
     def admin_user
       redirect_to(root_path) unless current_user.admin?
+    end
+
+    def ban_multiple_signup
+      if signed_in?
+        redirect_to root_url
+      end
     end
 
 

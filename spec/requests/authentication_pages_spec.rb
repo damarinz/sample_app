@@ -4,10 +4,12 @@ describe "Authentication" do
 	subject{page}
 
 	describe "signin page" do
-		before {visit signin_path}
+		before { visit signin_path }
 
 		it {should have_selector('h1',text:'Sign in')}
 		it {should have_selector('title',text:'Sign in')}
+		it {should_not have_link('Profile')}
+		it {should_not have_link('Settings')}
 	end
 
 	describe "signin" do
@@ -18,6 +20,7 @@ describe "Authentication" do
 
 			it {should have_selector('title',text:'Sign in')}
 			it {should have_selector('div.alert.alert-error',text:'invalid')}
+
 
 			describe "after visiting another page" do
 			    before { click_link "Home"}
@@ -87,6 +90,19 @@ describe "Authentication" do
 					it {should have_selector('title',text: 'Sign in')}
 				end
 			end
+
+			describe "in the Microposts controller" do
+
+				describe "submitting to the create action" do
+					before {post microposts_path}
+					specify {response.should redirect_to(signin_path)}
+				end
+
+				describe "submitting to the destroy action" do
+					before {delete micropost_path(FactoryGirl.create(:micropost))}
+					specify {response.should redirect_to(signin_path)}
+				end
+			end
 		end
 
 		describe "as wrong user" do
@@ -116,4 +132,5 @@ describe "Authentication" do
 			end
 		end
 	end
+
 end

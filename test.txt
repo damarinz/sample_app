@@ -1,0 +1,92 @@
+No DRb server is running. Running in local process instead ...
+......................FFFFFFFFF..*...*...**........................................*.................................
+
+Pending:
+  MicropostsHelper add some examples to (or delete) /Users/damarinz/Desktop/Develop/sample_app/spec/helpers/microposts_helper_spec.rb
+    # No reason given
+    # ./spec/helpers/microposts_helper_spec.rb:14
+  users/new.html.erb add some examples to (or delete) /Users/damarinz/Desktop/Develop/sample_app/spec/views/users/new.html.erb_spec.rb
+    # No reason given
+    # ./spec/views/users/new.html.erb_spec.rb:4
+  static_pages/contact.html.erb add some examples to (or delete) /Users/damarinz/Desktop/Develop/sample_app/spec/views/static_pages/contact.html.erb_spec.rb
+    # No reason given
+    # ./spec/views/static_pages/contact.html.erb_spec.rb:4
+  StaticPagesHelper add some examples to (or delete) /Users/damarinz/Desktop/Develop/sample_app/spec/helpers/static_pages_helper_spec.rb
+    # No reason given
+    # ./spec/helpers/static_pages_helper_spec.rb:14
+  UsersHelper add some examples to (or delete) /Users/damarinz/Desktop/Develop/sample_app/spec/helpers/users_helper_spec.rb
+    # No reason given
+    # ./spec/helpers/users_helper_spec.rb:14
+
+Failures:
+
+  1) UserPages index signup with invalid information should not create a user
+     Failure/Error: expect { click_button submit}.not_to change(User, :count)
+     Capybara::ElementNotFound:
+       no button with value or id or text 'Create my account' found
+     # (eval):2:in `click_button'
+     # ./spec/requests/user_pages_spec.rb:82:in `block (6 levels) in <top (required)>'
+     # ./spec/requests/user_pages_spec.rb:82:in `block (5 levels) in <top (required)>'
+
+  2) UserPages index signup with valid information should create a user
+     Failure/Error: fill_in "Name",with:"Example User"
+     Capybara::ElementNotFound:
+       cannot fill in, no text field, text area or password field with id, name, or label 'Name' found
+     # (eval):2:in `fill_in'
+     # ./spec/requests/user_pages_spec.rb:88:in `block (5 levels) in <top (required)>'
+
+  3) UserPages index signup with valid information after saving the user 
+     Failure/Error: Unable to find matching line from backtrace
+     SystemStackError:
+       stack level too deep
+     # /Users/damarinz/.rvm/gems/ruby-1.9.3-p484@rails3tutorial2ndEd/gems/rspec-core-2.11.1/lib/rspec/core/let.rb:33
+
+  4) UserPages index signup with valid information after saving the user 
+     Failure/Error: Unable to find matching line from backtrace
+     SystemStackError:
+       stack level too deep
+     # /Users/damarinz/.rvm/gems/ruby-1.9.3-p484@rails3tutorial2ndEd/gems/rspec-core-2.11.1/lib/rspec/core/let.rb:33
+
+  5) UserPages index signup with valid information after saving the user 
+     Failure/Error: Unable to find matching line from backtrace
+     SystemStackError:
+       stack level too deep
+     # /Users/damarinz/.rvm/gems/ruby-1.9.3-p484@rails3tutorial2ndEd/gems/rspec-core-2.11.1/lib/rspec/core/let.rb:33
+
+  6) UserPages index signup with signed_in user 
+     Failure/Error: it {should have_selector('title',text: user.name)}
+       expected css "title" with text "Person 58" to return something
+     # ./spec/requests/user_pages_spec.rb:114:in `block (5 levels) in <top (required)>'
+
+  7) UserPages index signup with signed_in user 
+     Failure/Error: it {should have_selector('div.alert.alert-success')}
+       expected css "div.alert.alert-success" to return something
+     # ./spec/requests/user_pages_spec.rb:113:in `block (5 levels) in <top (required)>'
+
+  8) UserPages index signup page 
+     Failure/Error: it {should have_selector('title', text: full_title('Sign up'))}
+       expected css "title" with text "Ruby on Rails Tutorial Sample App | Sign up" to return something
+     # ./spec/requests/user_pages_spec.rb:71:in `block (4 levels) in <top (required)>'
+
+  9) UserPages index signup page 
+     Failure/Error: it {should have_selector('h1', text: 'Sign up')}
+       expected css "h1" with text "Sign up" to return something
+     # ./spec/requests/user_pages_spec.rb:70:in `block (4 levels) in <top (required)>'
+
+Finished in 5.6 seconds
+117 examples, 9 failures, 5 pending
+
+Failed examples:
+
+rspec ./spec/requests/user_pages_spec.rb:81 # UserPages index signup with invalid information should not create a user
+rspec ./spec/requests/user_pages_spec.rb:94 # UserPages index signup with valid information should create a user
+rspec ./spec/requests/user_pages_spec.rb:102 # UserPages index signup with valid information after saving the user 
+rspec ./spec/requests/user_pages_spec.rb:103 # UserPages index signup with valid information after saving the user 
+rspec ./spec/requests/user_pages_spec.rb:104 # UserPages index signup with valid information after saving the user 
+rspec ./spec/requests/user_pages_spec.rb:114 # UserPages index signup with signed_in user 
+rspec ./spec/requests/user_pages_spec.rb:113 # UserPages index signup with signed_in user 
+rspec ./spec/requests/user_pages_spec.rb:71 # UserPages index signup page 
+rspec ./spec/requests/user_pages_spec.rb:70 # UserPages index signup page 
+
+Randomized with seed 5762
+
